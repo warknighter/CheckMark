@@ -29,7 +29,7 @@ public class Database {
       PreparedStatement pr = null;
       ResultSet rs = null;
       try {
-          pr = ConnectDB().prepareStatement("select fararid from Organization");
+          pr = ConnectDB().prepareStatement("select Number, RegistrationId, convert(Date, [Date], 104) as [Date] from ProducedReports");
           rs = pr.executeQuery();
       }
       catch (SQLException e){

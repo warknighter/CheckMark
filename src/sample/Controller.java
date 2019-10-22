@@ -46,12 +46,14 @@ public class Controller {
     @FXML
     void initialize(){
         btn_Select.setOnAction(event -> {
-            OpenScene("/sample/PickReport.fxml");
+
+            OpenScene("/sample/PickReport.fxml","Выбор отчета");
+
         });
 
     }
 
-    public void OpenScene(String window){
+    public void OpenScene(String window, String Title){
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(window));
 
@@ -65,6 +67,7 @@ public class Controller {
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle(Title);
         stage.showAndWait();
 
     }

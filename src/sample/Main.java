@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.sql.ResultSet;
+
 public class Main extends Application {
 
     @Override
@@ -14,6 +16,13 @@ public class Main extends Application {
         primaryStage.setTitle("Проверка марок");
         primaryStage.setScene(new Scene(root, 500, 450));
         primaryStage.show();
+
+//        Database db = new Database();
+//        ResultSet rs = null;
+//        rs =  db.select();
+//        while (rs.next()){
+//            System.out.println(rs.getString("Number"));
+//        }
     }
 
 
