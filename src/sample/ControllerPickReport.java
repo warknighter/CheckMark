@@ -17,7 +17,9 @@ import java.util.Observable;
 
 public class ControllerPickReport {
 
-    private ObservableList<Reports> reports = FXCollections.observableArrayList();
+    private static ObservableList<Reports> reports = FXCollections.observableArrayList();
+
+
     @FXML
     private TableView<Reports> table_Report;
     @FXML
@@ -32,11 +34,24 @@ public class ControllerPickReport {
     private Button btn_pickreport;
 
     @FXML
+    private Button btn_close;
+
+    @FXML
     void initialize(){
         FillTable();
 
-        btn_pickreport.setOnAction(event -> {
 
+        btn_pickreport.setOnAction(event -> {
+          Reports SelectedReport = table_Report.getSelectionModel().getSelectedItem();
+          Controller Rp = new Controller();
+            Rp.SelectedReports.add(new Reports(SelectedReport.getReportNummber(),SelectedReport.getReportRegNum(),SelectedReport.getReportDate()));
+//          for (int i = 0; i < SelectedReports.size();i++){
+//              System.out.println(SelectedReports.get(i).getReportNummber() + ' ' +  SelectedReports.get(i).getReportNummber() + ' ' + SelectedReports.get(i).getReportDate());
+//          }
+          });
+
+        btn_close.setOnAction(event -> {
+            btn_close.getScene().getWindow().hide();
         });
     }
 
@@ -44,7 +59,7 @@ public class ControllerPickReport {
         Database db = new Database();
         ResultSet rs_Reports = null;
 
-        rs_Reports = db.select();
+        rs_Reports = db.selectAllReports();
         try {
             while (rs_Reports.next()){
                 String Number = rs_Reports.getString("Number");

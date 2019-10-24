@@ -25,7 +25,7 @@ public class Database {
          return con;
     }
 
-    public  ResultSet select(){
+    public  ResultSet selectAllReports(){
       PreparedStatement pr = null;
       ResultSet rs = null;
       try {
